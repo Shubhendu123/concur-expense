@@ -60,42 +60,55 @@ export function HeroBanner() {
           </p>
         </div>
 
-        <div className="flex items-center gap-5 md:border-l md:border-fiori-blue/20 md:pl-7">
-          <div className="flex flex-col items-end">
-            <div className="text-[34px] leading-none font-semibold text-fiori-blue tnum">
+        <div className="flex flex-col items-end md:border-l md:border-fiori-blue/20 md:pl-8 md:pr-1 gap-2 md:min-w-[300px]">
+          <div className="flex flex-col items-end leading-none">
+            <span
+              className="font-semibold text-fiori-blue tnum"
+              style={{ fontSize: 72, lineHeight: 0.95, letterSpacing: "-0.02em" }}
+            >
               {pct}%
-            </div>
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-fiori-text-muted mt-1.5">
+            </span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-fiori-text-secondary mt-2">
               Autonomy rate
-            </div>
-            <div className="mt-2 h-1.5 w-[160px] rounded-full bg-white/80 border border-fiori-blue/10 overflow-hidden">
-              <div
-                className="h-full rounded-full bg-fiori-blue"
-                style={{ width: `${pct}%` }}
-              />
-            </div>
-            <div className="text-[11px] text-fiori-text-secondary tnum mt-1">
-              {AUTO} of {TOTAL} this period · {completedNow} processed today
-            </div>
+            </span>
           </div>
 
-          {!allClear ? (
-            <Link
-              href="/exceptions"
-              className="inline-flex items-center gap-1.5 h-9 px-3 rounded-[6px] bg-fiori-blue text-white text-[13px] font-medium hover:bg-fiori-blue-hover fiori-transition shadow-[0_1px_0_rgba(0,0,0,0.05)]"
-            >
-              Review exceptions
-              <ChevronRight className="h-3.5 w-3.5" />
-            </Link>
-          ) : (
-            <Link
-              href="/finance"
-              className="inline-flex items-center gap-1.5 h-9 px-3 rounded-[6px] bg-white border border-fiori-blue/30 text-fiori-blue text-[13px] font-medium hover:bg-fiori-blue-tint fiori-transition"
-            >
-              Open insights
-              <ChevronRight className="h-3.5 w-3.5" />
-            </Link>
-          )}
+          <div className="h-1.5 w-full max-w-[260px] rounded-full bg-white/85 border border-fiori-blue/15 overflow-hidden mt-1">
+            <div
+              className="h-full rounded-full bg-fiori-blue"
+              style={{ width: `${pct}%` }}
+            />
+          </div>
+
+          <p className="text-[12px] text-fiori-text-secondary text-right leading-snug tnum mt-1">
+            <span className="font-semibold text-fiori-text">
+              {AUTO} of {TOTAL}
+            </span>{" "}
+            reports resolved without human intervention
+            <span className="block text-[11px] text-fiori-text-muted mt-0.5">
+              {completedNow} processed today
+            </span>
+          </p>
+
+          <div className="mt-2">
+            {!allClear ? (
+              <Link
+                href="/exceptions"
+                className="inline-flex items-center gap-1.5 h-9 px-3 rounded-[6px] bg-fiori-blue text-white text-[13px] font-medium hover:bg-fiori-blue-hover fiori-transition shadow-[0_1px_0_rgba(0,0,0,0.05)]"
+              >
+                Review {needsReview} exception{needsReview === 1 ? "" : "s"}
+                <ChevronRight className="h-3.5 w-3.5" />
+              </Link>
+            ) : (
+              <Link
+                href="/finance"
+                className="inline-flex items-center gap-1.5 h-9 px-3 rounded-[6px] bg-white border border-fiori-blue/30 text-fiori-blue text-[13px] font-medium hover:bg-fiori-blue-tint fiori-transition"
+              >
+                Open insights
+                <ChevronRight className="h-3.5 w-3.5" />
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

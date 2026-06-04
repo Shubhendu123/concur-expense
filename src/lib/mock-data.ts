@@ -29,6 +29,11 @@ export type Exception = {
   aiHeadline: string;
   aiReasoning: string;
   precedentPct: number;
+  precedentBasis: {
+    similarApprovals: number;
+    quarters: number;
+    businessUnits: number;
+  };
   recommendation: "Approve" | "Escalate";
   confidence: number;
   evidence: EvidenceItem[];
@@ -130,6 +135,7 @@ export const exceptions: Exception[] = [
     aiReasoning:
       "Conference block rates in downtown San Francisco exceeded the standard corporate cap during the event window. This is a known, time-bound rate spike.",
     precedentPct: 92,
+    precedentBasis: { similarApprovals: 421, quarters: 14, businessUnits: 7 },
     recommendation: "Approve",
     confidence: 74,
     evidence: [
@@ -158,6 +164,7 @@ export const exceptions: Exception[] = [
     aiReasoning:
       "Long-haul transatlantic policy permits economy. Premium economy was booked due to last-minute itinerary change after a client meeting was rescheduled. Trip length and meeting outcome support the upgrade.",
     precedentPct: 84,
+    precedentBasis: { similarApprovals: 187, quarters: 12, businessUnits: 5 },
     recommendation: "Approve",
     confidence: 71,
     evidence: [
@@ -186,6 +193,7 @@ export const exceptions: Exception[] = [
     aiReasoning:
       "Itemized receipt indicates a four-person business dinner including two external attendees from a strategic account. Calendar confirms the meeting. Per-attendee spend is within the client-entertainment guideline.",
     precedentPct: 88,
+    precedentBasis: { similarApprovals: 308, quarters: 14, businessUnits: 9 },
     recommendation: "Approve",
     confidence: 76,
     evidence: [
@@ -234,6 +242,76 @@ export type Insight = {
   recommendation: string;
   delta?: string;
 };
+
+export type PolicyChange = {
+  id: string;
+  title: string;
+  current: string;
+  recommended: string;
+  expectedImpact: string;
+  estimatedSavings: string;
+  status: "Recommended" | "High Confidence";
+};
+
+export const policyChanges: PolicyChange[] = [
+  {
+    id: "pol-hotel-cap",
+    title: "Hotel Cap Adjustment",
+    current: "$250 / night",
+    recommended: "$300 / night in conference cities",
+    expectedImpact: "34% fewer exceptions",
+    estimatedSavings: "120 manager review hours annually",
+    status: "Recommended",
+  },
+  {
+    id: "pol-vendor-adoption",
+    title: "Preferred Vendor Adoption",
+    current: "62%",
+    recommended: "80%",
+    expectedImpact: "Higher negotiated discount tier",
+    estimatedSavings: "$180K annual savings",
+    status: "High Confidence",
+  },
+];
+
+export type Recommendation = {
+  id: string;
+  action: string;
+  expectedImpact: string;
+  confidence: "High" | "Medium";
+  potentialSavings: string;
+};
+
+export const recommendations: Recommendation[] = [
+  {
+    id: "rec-hotel-policy",
+    action: "Review hotel policy in conference-heavy markets.",
+    expectedImpact: "Fewer routine exceptions in Q3",
+    confidence: "High",
+    potentialSavings: "$92K + 120 review hours",
+  },
+  {
+    id: "rec-vendor-emea",
+    action: "Increase preferred vendor adoption in EMEA.",
+    expectedImpact: "+18 pts vendor compliance",
+    confidence: "High",
+    potentialSavings: "$180K annually",
+  },
+  {
+    id: "rec-conf-policy",
+    action: "Create conference-specific travel policies.",
+    expectedImpact: "38% of exceptions removed at source",
+    confidence: "High",
+    potentialSavings: "$64K + 80 review hours",
+  },
+  {
+    id: "rec-sales-bottleneck",
+    action: "Investigate approval bottlenecks in Sales.",
+    expectedImpact: "Cycle time 4.2d → 1.8d",
+    confidence: "Medium",
+    potentialSavings: "Faster reimbursement, lower DSO",
+  },
+];
 
 export const insights: Insight[] = [
   {

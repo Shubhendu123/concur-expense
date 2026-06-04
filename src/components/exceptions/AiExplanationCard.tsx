@@ -40,7 +40,7 @@ export function AiExplanationCard({ ex }: { ex: Exception }) {
           </div>
         </div>
 
-        <div className="lg:w-[220px] flex flex-col items-center justify-center bg-[#FAFBFC] border border-fiori-border rounded-[8px] p-4">
+        <div className="lg:w-[240px] flex flex-col items-center bg-[#FAFBFC] border border-fiori-border rounded-[8px] p-4">
           <Ring pct={ex.precedentPct} />
           <p className="mt-3 text-center text-[12.5px] text-fiori-text-secondary leading-snug">
             of similar exceptions
@@ -50,6 +50,38 @@ export function AiExplanationCard({ ex }: { ex: Exception }) {
           <p className="mt-2 text-[11px] uppercase tracking-wider text-fiori-text-muted font-semibold">
             Precedent · {ex.precedentPct >= 90 ? "Strong" : "Moderate"}
           </p>
+
+          <div className="mt-3 pt-3 w-full border-t border-fiori-border">
+            <p className="text-[10.5px] uppercase tracking-[0.06em] font-semibold text-fiori-text-muted text-center">
+              Why {ex.precedentPct}%?
+            </p>
+            <ul className="mt-1.5 space-y-0.5 text-[11px] text-fiori-text-secondary leading-snug">
+              <li className="flex items-baseline justify-between gap-2">
+                <span>Similar approvals</span>
+                <span className="tnum font-semibold text-fiori-text">
+                  {ex.precedentBasis.similarApprovals.toLocaleString()}
+                </span>
+              </li>
+              <li className="flex items-baseline justify-between gap-2">
+                <span>Quarters of history</span>
+                <span className="tnum font-semibold text-fiori-text">
+                  {ex.precedentBasis.quarters}
+                </span>
+              </li>
+              <li className="flex items-baseline justify-between gap-2">
+                <span>Business units</span>
+                <span className="tnum font-semibold text-fiori-text">
+                  {ex.precedentBasis.businessUnits}
+                </span>
+              </li>
+              <li className="flex items-baseline justify-between gap-2">
+                <span>Policy engine</span>
+                <span className="font-semibold text-fiori-positive">
+                  Validated
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

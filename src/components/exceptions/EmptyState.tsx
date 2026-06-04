@@ -13,18 +13,19 @@ export function EmptyState() {
         </span>
       </div>
 
-      <h2 className="text-[22px] font-semibold text-fiori-text mt-5">
-        All clear
+      <h2 className="text-[24px] font-semibold text-fiori-text mt-5 leading-tight">
+        All exceptions resolved.
       </h2>
-      <p className="text-[14px] text-fiori-text-secondary mt-2 max-w-md">
-        Every report has been processed. Nothing requires human review right
-        now. Concur Intelligence will route a new item here automatically when
-        one needs your judgment.
+      <p className="text-[15px] text-fiori-text-secondary mt-2.5 max-w-md leading-snug">
+        <span className="font-semibold text-fiori-text tnum">42</span>{" "}
+        reports processed.{" "}
+        <span className="font-semibold text-fiori-blue tnum">Only 3</span>{" "}
+        required human judgment.
       </p>
 
-      <div className="mt-5 grid grid-cols-3 gap-4 max-w-md w-full">
-        <Stat value="42 / 42" label="Reports posted" />
-        <Stat value="100%" label="Cleared today" />
+      <div className="mt-6 grid grid-cols-3 gap-4 max-w-md w-full">
+        <Stat value="39" label="Auto-filed" />
+        <Stat value="3" label="You decided" />
         <Stat value="18.4h" label="Time saved" />
       </div>
 
