@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Concur Expense — Vision Prototype
 
-## Getting Started
+A clickable, front-end-only prototype exploring what expense management looks like when routine reports file themselves and humans govern only the exceptions.
 
-First, run the development server:
+**Live demo →** https://concur-expense.vercel.app
+
+## The idea
+
+Most expense tools are systems of record: someone submits, someone approves, work moves through a queue. This prototype reframes the product as a system of **trusted autonomy** — Concur Intelligence assembles, validates, and posts the routine reports on its own, then surfaces only the exceptions a human actually needs to judge. Every recommendation comes with transparent reasoning: why it auto-filed, what evidence supports it, and what precedent exists for similar cases.
+
+It is not a chatbot or copilot. It is autonomous decision-support with a visible audit trail.
+
+## What's in it
+
+- **Expense Operations Center** (`/dashboard`) — autonomy hero, KPIs, recent reports table with confidence meters.
+- **Exception Intelligence Workspace** (`/exceptions`) — the hero screen. A queue of items the engine could not auto-file, each with an AI recommendation, supporting evidence, precedent statistics, and a one-click decision panel that updates the dashboard in real time.
+- **Finance Intelligence** (`/finance`) — strategic insights derived from expense behavior, oriented toward spend governance rather than transaction posting.
+
+## How to demo it
+
+1. Open the dashboard.
+2. Click **Review** on any of the three flagged reports.
+3. On the workspace, click **Approve** — watch the queue auto-advance to the next exception and the dashboard KPI decrement.
+4. Clear all three to land on the "All clear" state.
+
+## Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS, themed to the SAP Fiori Horizon design system
+- zustand for shared client state, sonner for toasts, lucide-react for icons
+- 100% mock data — no backend, no auth, no API
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open http://localhost:3000.
