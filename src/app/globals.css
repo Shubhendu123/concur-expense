@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-fiori-bg: #F5F6F7;
+  --color-fiori-surface: #FFFFFF;
+  --color-fiori-border: #E5E6E8;
+  --color-fiori-border-strong: #D9D9D9;
+  --color-fiori-text: #1D2D3E;
+  --color-fiori-text-secondary: #5B6770;
+  --color-fiori-text-muted: #8B9298;
+  --color-fiori-blue: #0070F2;
+  --color-fiori-blue-hover: #0064D9;
+  --color-fiori-blue-tint: #EAF2FD;
+  --color-fiori-row-hover: #F5F8FE;
+  --color-fiori-positive: #107E3E;
+  --color-fiori-positive-bg: #EBF5EB;
+  --color-fiori-warning: #C35500;
+  --color-fiori-warning-strong: #E76500;
+  --color-fiori-warning-bg: #FEF7E5;
+  --color-fiori-negative: #BB0000;
+  --color-fiori-negative-bg: #FFECEC;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --radius-card: 8px;
+  --radius-chip: 6px;
+
+  --shadow-fiori-card: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-fiori-pop: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  background: var(--color-fiori-bg);
+  color: var(--color-fiori-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+button {
+  font-family: inherit;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.caption-label {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-fiori-text-muted);
+  font-weight: 600;
+}
+
+.fiori-card {
+  background: #fff;
+  border: 1px solid var(--color-fiori-border);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.fiori-transition {
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease,
+    transform 160ms ease, opacity 160ms ease, box-shadow 160ms ease;
+}
+
+.fiori-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.fiori-scroll::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.fiori-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes fiori-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fiori-fade-in {
+  animation: fiori-fade-in 180ms ease-out both;
 }
