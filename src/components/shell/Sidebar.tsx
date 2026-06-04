@@ -19,12 +19,12 @@ type NavItem = {
 };
 
 const items: NavItem[] = [
-  { label: "Home", icon: Home },
   { label: "Expense", icon: Receipt, href: "/dashboard" },
+  { label: "Finance Insights", icon: LineChart, href: "/finance" },
+  { label: "Home", icon: Home },
   { label: "Travel", icon: Plane },
   { label: "Approvals", icon: CheckSquare },
   { label: "Reports", icon: FileBarChart },
-  { label: "Finance Insights", icon: LineChart, href: "/finance" },
 ];
 
 export function Sidebar() {

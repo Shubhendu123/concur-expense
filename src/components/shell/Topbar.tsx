@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, HelpCircle, LayoutGrid, Search } from "lucide-react";
+import { Bell, ChevronDown, HelpCircle, Search } from "lucide-react";
 import { Avatar } from "@/components/ui/Avatar";
 import { useExceptionsStore } from "@/lib/store";
 
@@ -9,16 +9,16 @@ export function Topbar() {
 
   return (
     <header className="h-[50px] shrink-0 bg-white border-b border-fiori-border flex items-center px-4 gap-3">
-      <button
-        aria-label="Menu"
-        className="h-8 w-8 rounded-[6px] flex items-center justify-center text-fiori-text-secondary hover:bg-fiori-row-hover hover:text-fiori-blue fiori-transition"
-      >
-        <LayoutGrid className="h-4 w-4" />
-      </button>
-      <div className="flex items-center gap-1.5">
-        <span className="text-[15px] font-semibold text-fiori-text">
-          Concur Expense
+      <div className="flex items-center gap-2.5">
+        <SapLogo />
+        <span className="text-[15px] font-semibold text-fiori-blue tracking-tight">
+          Concur
         </span>
+        <span className="h-4 w-px bg-fiori-border" />
+        <button className="inline-flex items-center gap-1 text-[13.5px] font-medium text-fiori-text hover:text-fiori-blue fiori-transition">
+          Expense
+          <ChevronDown className="h-3.5 w-3.5 text-fiori-text-muted" />
+        </button>
       </div>
 
       <div className="flex-1 flex justify-center">
@@ -66,5 +66,33 @@ export function Topbar() {
         </div>
       </div>
     </header>
+  );
+}
+
+function SapLogo() {
+  return (
+    <span
+      aria-label="SAP"
+      className="inline-flex items-center justify-center select-none"
+      style={{
+        height: 22,
+        width: 42,
+        background: "linear-gradient(180deg, #008FD3 0%, #0070C0 100%)",
+        borderRadius: 3,
+        boxShadow: "inset 0 -1px 0 rgba(0,0,0,0.12)",
+      }}
+    >
+      <span
+        className="text-white font-bold tnum"
+        style={{
+          fontSize: 12,
+          letterSpacing: "0.06em",
+          fontFamily:
+            "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
+        }}
+      >
+        SAP
+      </span>
+    </span>
   );
 }
