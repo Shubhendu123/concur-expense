@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Sparkles, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useExceptionsStore } from "@/lib/store";
@@ -13,6 +14,16 @@ export function HeroBanner() {
   const pct = Math.round((AUTO / TOTAL) * 100);
   const allClear = needsReview === 0;
 
+  const [todayLabel, setTodayLabel] = useState("");
+  useEffect(() => {
+    setTodayLabel(
+      new Date().toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      }),
+    );
+  }, []);
+
   return (
     <div className="fiori-card relative overflow-hidden border-l-[4px] !border-l-fiori-blue">
       <div className="absolute inset-0 bg-fiori-blue-tint/55 pointer-events-none" />
@@ -23,8 +34,11 @@ export function HeroBanner() {
               <Sparkles className="h-3 w-3" />
               CONCUR INTELLIGENCE
             </span>
-            <span className="caption-label !text-fiori-text-secondary">
-              Live · {new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+            <span
+              className="caption-label !text-fiori-text-secondary"
+              suppressHydrationWarning
+            >
+              Live{todayLabel ? ` · ${todayLabel}` : ""}
             </span>
           </div>
           <h1 className="text-[20px] md:text-[22px] font-semibold text-fiori-text leading-snug tracking-[-0.005em]">
