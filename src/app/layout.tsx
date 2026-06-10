@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { Shell } from "@/components/shell/Shell";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         <Shell>{children}</Shell>
+        <Analytics />
         <Toaster
           position="bottom-right"
           theme="light"
